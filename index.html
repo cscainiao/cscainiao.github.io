@@ -252,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/26/mysql基础/" data-id="cjhrnspk80001wq6axntum3sg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/26/mysql基础/" data-id="cji9otzo100010z6aovzyh18g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +276,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/26/django/">django(实战01)</a>
+      <a class="article-title" href="/2018/05/26/django/">django(课堂重点)</a>
     </h1>
   
 
@@ -284,11 +284,123 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ul>
+<li><p>新建django项目</p>
+<ul>
+<li><p>pycharm直接创建 (默认是django2.0版本)</p>
+</li>
+<li><p>手动创建</p>
+<ul>
+<li><p>首先在目录下面新建一个venv的文件夹(这个文件夹以后全部装虚拟环境),新建一个目录用来放项目  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir venv</span><br><span class="line">mkdir workspace</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入文件夹目录,安装virtualenv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vevn</span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装django虚拟环境, (指定python的版本,并安装纯净的django环境)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv -p /usr/local/bin/python3.6 --no-site-packages djangoenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>激活虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source djangoenv/bin/activate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pip freeze/pip list:查看pip安装过的包</p>
+</li>
+<li><p>安装django</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django==1.11</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入workspace目录新建django项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开pycharm,用pycharm打开新建的项目</p>
+<ul>
+<li>配置pycharm虚拟环境,找到刚刚新建的虚拟环境djangovenv/bin/python3.6</li>
+</ul>
+</li>
+<li><p>配置运行</p>
+</li>
+<li><p>确认terminal是在虚拟环境下面,如果没有激活虚拟环境(同步骤4) 在回到项目主目录下</p>
+</li>
+<li><p>这样就可以达到pycharm建的django项目的效果了,而且还不用安装多余的包,项目需要什么包就安装什么包,以后建项目的时候就可以直接引用之前建立好的虚拟环境</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>文件上传</p>
+<ul>
+<li><p>页面的input标签的type属性写file</p>
+</li>
+<li><p>项目新建media目录</p>
+</li>
+<li><p>项目setting设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MEDIA_URL = &apos;/media/&apos;</span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, &apos;media&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>项目url设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示页面img下面src属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/media/&#123;&#123; user.icon &#125;&#125;&quot; alt=&quot;icon&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>中间件</p>
+<ul>
+<li>项目utils目录下新建UserAuthMiddleware.py在里面写入中间件</li>
+<li>项目setting下面的MIDDLEWARE添加新建的中间件</li>
+</ul>
+</li>
+<li><p>http请求方式</p>
+<ul>
+<li>GET：用于获取</li>
+<li>POST： 用于创建</li>
+<li>PUT：用于修改， 全部属性都会修改</li>
+<li>PATCH: 用于修改，部分属性进行修改</li>
+<li>DELETE: 删除</li>
+</ul>
+</li>
+<li><p>ajax请求方式 (后端定义一个url让ajax去请求,  返回后端url定义的函数, 函数返回的数据在ajax 的msg里面;Ajax里面的data里面的数据传入后端)</p>
+<ul>
+<li><p>$.get(url, function(msg){  }),     </p>
+</li>
+<li><p>$.post(url, function(msg){ })   url表示请求的地址，function(msg)代表，请求成功后的回调函数，msg是api返回的结果</p>
+</li>
+<li><p>$.ajax({</p>
+<pre><code>    url:&apos;&apos;, # 请求的url地址，
+type:&apos;&apos;, # GET POST PATCH PUT DELETE
+data：{&apos;name&apos;:name,&apos;sex&apos;:sex}，  # 代表请求的参数 传入后端
+dataType:&apos;json&apos;,
+headers:{&apos;X-CSRFToken&apos;: csrf}  # 代表传递的csrf值
+success:function(msg){
+    成功执行回调函数
+},
+error:function(msg){
+    失败执行回调函数
+}
+</code></pre><p>});</p>
+</li>
+</ul>
+</li>
+<li><p>F/Q</p>
+<ul>
+<li><p>F：用于做计算  students.filter(s_yuwen__gt= F(‘s_shuxue’) + 10)</p>
+</li>
+<li><p>Q:用于过滤信息       |或者       &amp;并且      ~取反 </p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/26/django/" data-id="cjhrnspjo0000wq6aycrhiywa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/26/django/" data-id="cji9otzn900000z6adapa59hl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +445,7 @@
           </li>
         
           <li>
-            <a href="/2018/05/26/django/">django(实战01)</a>
+            <a href="/2018/05/26/django/">django(课堂重点)</a>
           </li>
         
       </ul>
