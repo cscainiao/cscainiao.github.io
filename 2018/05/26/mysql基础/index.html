@@ -12,13 +12,14 @@
 
     
     <meta name="description" content="安装mysql请自行百度启动mysql数据库1.运行窗口servers.msc里面选择mysql服务启动 2.在命令窗口输入net start mysql57  SQL1.简述 SQL(Structured Query Language): 结构化查询语言(关系型数据库的编程语言) DDL(数据定义语言): create(创建) / drop(删除) / alter(修改) DML(数据操纵语言)">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql基础">
 <meta property="og:url" content="http://yoursite.com/2018/05/26/mysql基础/index.html">
 <meta property="og:site_name" content="熊星的个人博客">
 <meta property="og:description" content="安装mysql请自行百度启动mysql数据库1.运行窗口servers.msc里面选择mysql服务启动 2.在命令窗口输入net start mysql57  SQL1.简述 SQL(Structured Query Language): 结构化查询语言(关系型数据库的编程语言) DDL(数据定义语言): create(创建) / drop(删除) / alter(修改) DML(数据操纵语言)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-29T12:25:20.798Z">
+<meta property="og:updated_time" content="2018-07-17T11:16:31.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql基础">
 <meta name="twitter:description" content="安装mysql请自行百度启动mysql数据库1.运行窗口servers.msc里面选择mysql服务启动 2.在命令窗口输入net start mysql57  SQL1.简述 SQL(Structured Query Language): 结构化查询语言(关系型数据库的编程语言) DDL(数据定义语言): create(创建) / drop(删除) / alter(修改) DML(数据操纵语言)">
@@ -129,7 +130,7 @@
 </ol>
 <h3 id="4-表的设计原则-范式理论-1NF-2NF-3NF-BCNF"><a href="#4-表的设计原则-范式理论-1NF-2NF-3NF-BCNF" class="headerlink" title="4.表的设计原则: 范式理论(1NF / 2NF / 3NF / BCNF)"></a>4.表的设计原则: 范式理论(1NF / 2NF / 3NF / BCNF)</h3><ul>
 <li><p>范式级别指的是表设计的规范程度, 范式级别越高规范程度也就越高</p>
-<p> 范式级别越高在插入/删除/更新数据时可能发生的问题就越少<br>而且表中的数据冗余度(重复)也就越低<br> 实际开发中往往会降低范式级别来提升查询数据的性能<br>1NF - 列的属性值不能够再拆分<br>2NF - 除了主键列之外的列要完全依赖于主键<br>场景: 不同学院的学生可能有相同的学号<br>学生表(stuid, sname, ssex, did, dname, dtel)<br>主键(stuid, did)<br>sname和ssex依赖于stuid, 而dname和dtel依赖于depid<br>这种依赖是部分依赖而不是完全依赖所以不满足2NF<br>3NF - 消除传递依赖<br>场景: 整个学校学生的学号是唯一的<br>学生表(stuid, sname, ssex, did, dname, dtel)<br>主键(stuid)</p>
+<p> 范式级别越高在插入/删除/更新数据时可能发生的问题就越少<br>  而且表中的数据冗余度(重复)也就越低<br> 实际开发中往往会降低范式级别来提升查询数据的性能<br>  1NF - 列的属性值不能够再拆分<br>  2NF - 除了主键列之外的列要完全依赖于主键<br>  场景: 不同学院的学生可能有相同的学号<br>  学生表(stuid, sname, ssex, did, dname, dtel)<br>  主键(stuid, did)<br>  sname和ssex依赖于stuid, 而dname和dtel依赖于depid<br>  这种依赖是部分依赖而不是完全依赖所以不满足2NF<br>  3NF - 消除传递依赖<br>  场景: 整个学校学生的学号是唯一的<br>  学生表(stuid, sname, ssex, did, dname, dtel)<br>  主键(stuid)</p>
 </li>
 </ul>
 <h3 id="mysql实际应用-学校选课系统"><a href="#mysql实际应用-学校选课系统" class="headerlink" title="mysql实际应用(学校选课系统)"></a>mysql实际应用(学校选课系统)</h3><ul>
@@ -270,6 +271,16 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/sql/">sql</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql/">mysql</a>
+  </div>
 
 </div>
 
@@ -322,19 +333,23 @@
   
 
   
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
 		
-			
-				<li><a href="/tags/django/" title="django">django<sup>1</sup></a></li>
-			
+		  
+			<li><a href="/categories/django/" title="django">django<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/sql/" title="sql">sql<sup>1</sup></a></li>
+		  
 		
 		</ul>
 </div>
 
+
+  
 
   <div class="linkslist">
   <p class="asidetitle">Links</p>
